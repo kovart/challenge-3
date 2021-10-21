@@ -30,7 +30,7 @@ const handleTransaction: HandleTransaction = async (txEvent: TransactionEvent) =
       Finding.fromObject({
         name: 'Compound Blacklisted Address',
         description: `Compound transaction involving a blacklisted addresses: [${blacklistedAddresses.join(', ')}]`,
-        alertId: 'FORTA-COMPOUND-BLACKLIST',
+        alertId: 'COMP-BLACKLIST',
         severity: FindingSeverity.High,
         type: FindingType.Suspicious,
         metadata: {

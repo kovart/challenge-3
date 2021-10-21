@@ -68,7 +68,7 @@ describe('compound blacklisted address agent', () => {
         Finding.fromObject({
           name: 'Compound Blacklisted Address',
           description: `Compound transaction involving a blacklisted addresses: [${blacklistedAddress}]`,
-          alertId: 'FORTA-COMPOUND-BLACKLIST',
+          alertId: 'COMP-BLACKLIST',
           type: FindingType.Suspicious,
           severity: FindingSeverity.High,
           metadata: {
@@ -96,7 +96,7 @@ describe('compound blacklisted address agent', () => {
         Finding.fromObject({
           name: 'Compound Blacklisted Address',
           description: `Compound transaction involving a blacklisted addresses: [${blacklistedAddress1}, ${blacklistedAddress2}]`,
-          alertId: 'FORTA-COMPOUND-BLACKLIST',
+          alertId: 'COMP-BLACKLIST',
           type: FindingType.Suspicious,
           severity: FindingSeverity.High,
           metadata: {

@@ -7,7 +7,8 @@ This agent monitors Ethereum network and detects Compound transactions that invo
 ## Compound Network
 
 Compound Finance uses different addresses in different Ethereum networks (Mainnet, Rinkeby, Goeli etc...).
-To make the agent more testable, we get addresses from official [compound-finance/compound-protocol](https://github.com/compound-finance/compound-protocol) repository for the network provided in `COMPOUND_NETWORK` constant.
+To make the agent more testable, we get addresses from official [compound-finance/compound-protocol](https://github.com/compound-finance/compound-protocol) 
+repository for the network provided in `COMPOUND_NETWORK` constant.
 
 ## Settings
 
@@ -35,7 +36,7 @@ That's it 😎
 
 ## Alerts
 
-- FORTA-COMPOUND-BLACKLIST
+- COMP-BLACKLIST
   - Fired when a transaction or subtransaction involves one of the blacklisted addresses
   - Severity is always set to "high"
   - Type is always set to "suspicious"

@@ -14,10 +14,10 @@
     "publish": "forta-agent publish",
     "disable": "forta-agent disable",
     "enable": "forta-agent enable",
-    "test": "jest"
+    "test": "jest",
+    "install": "git clone https://github.com/compound-finance/compound-config.git node_modules/compound-config"
   },
   "dependencies": {
-    "compound-protocol": "github:compound-finance/compound-protocol",
     "forta-agent": "^0.0.22",
     "web3": "^1.6.0"
   },

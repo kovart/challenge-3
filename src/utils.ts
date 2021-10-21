@@ -1,11 +1,11 @@
 import Web3 from 'web3';
 import { getJsonRpcUrl } from 'forta-agent';
 
-import GoerliConfig from 'compound-protocol/networks/goerli.json';
-import KovanConfig from 'compound-protocol/networks/kovan.json';
-import MainnetConfig from 'compound-protocol/networks/mainnet.json';
-import RinkebyConfig from 'compound-protocol/networks/rinkeby.json';
-import RopstenConfig from 'compound-protocol/networks/ropsten.json';
+import GoerliConfig from 'compound-config/networks/goerli.json';
+import KovanConfig from 'compound-config/networks/kovan.json';
+import MainnetConfig from 'compound-config/networks/mainnet.json';
+import RinkebyConfig from 'compound-config/networks/rinkeby.json';
+import RopstenConfig from 'compound-config/networks/ropsten.json';
 
 type CompoundAddressInfo = {
   path: string;
@@ -75,6 +75,8 @@ export class CompoundHelper {
     for (const address of addresses) {
       this._addressMap[address.address] = address;
     }
+
+    console.log(this._addressMap)
   }
 
   public isCompoundAddress(address: string): boolean {

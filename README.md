@@ -7,7 +7,7 @@ This agent monitors Ethereum network and detects Compound transactions that invo
 ## Compound Network
 
 Compound Finance uses different addresses in different Ethereum networks (Mainnet, Rinkeby, Goeli etc...).
-To make the agent more testable, we get addresses from official [compound-finance/compound-protocol](https://github.com/compound-finance/compound-protocol) 
+To make the agent more testable, we get addresses from official [compound-finance/compound-config](https://github.com/compound-finance/compound-config) 
 repository for the network provided in `COMPOUND_NETWORK` constant.
 
 ## Settings

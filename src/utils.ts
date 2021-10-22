@@ -75,8 +75,6 @@ export class CompoundHelper {
     for (const address of addresses) {
       this._addressMap[address.address] = address;
     }
-
-    console.log(this._addressMap)
   }
 
   public isCompoundAddress(address: string): boolean {

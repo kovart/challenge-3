@@ -79,18 +79,19 @@ describe('compound blacklisted address agent', () => {
       ]);
     });
 
-    it('returns a finding if multiple Compound addresses interact with a blacklisted address', async () => {
+    it('returns a finding if Compound addresses interacts with multiple blacklisted addresses', async () => {
       const blacklistedAddress1 = BLACKLISTED_ADDRESSES[0];
       const blacklistedAddress2 = BLACKLISTED_ADDRESSES[1];
       const compoundAddress = COMPOUND_CONFIG.cTokens.cDAI.underlying;
+      const compoundAddressName = COMPOUND_CONFIG.cTokens.cDAI.name;
+
       const txEvent = createTxEventWithAddresses({
         [compoundAddress]: true,
         [blacklistedAddress1]: true,
-        [blacklistedAddress2]: true,
+        [blacklistedAddress2]: true
       });
 
       const findings = await handleTransaction(txEvent);
-
 
       expect(findings).toStrictEqual([
         Finding.fromObject({
@@ -101,7 +102,37 @@ describe('compound blacklisted address agent', () => {
           severity: FindingSeverity.High,
           metadata: {
             blacklistedAddresses: `[${blacklistedAddress1}, ${blacklistedAddress2}]`,
-            compoundAddresses: `[${COMPOUND_CONFIG.cTokens.cDAI.underlying} (${COMPOUND_CONFIG.cTokens.cDAI.name})]`
+            compoundAddresses: `[${compoundAddress} (${compoundAddressName})]`
+          }
+        })
+      ]);
+    });
+
+    it('returns a finding if multiple Compound addresses interact with a blacklisted address', async () => {
+      const blacklistedAddress = BLACKLISTED_ADDRESSES[0];
+      const compoundAddress1 = COMPOUND_CONFIG.Maximillion.address;
+      const compoundAddress1Name = 'Maximillion.address'; // path
+      const compoundAddress2 = COMPOUND_CONFIG.cTokens.cDAI.underlying;
+      const compoundAddress2Name = COMPOUND_CONFIG.cTokens.cDAI.name;
+
+      const txEvent = createTxEventWithAddresses({
+        [blacklistedAddress]: true,
+        [compoundAddress1]: true,
+        [compoundAddress2]: true
+      });
+
+      const findings = await handleTransaction(txEvent);
+
+      expect(findings).toStrictEqual([
+        Finding.fromObject({
+          name: 'Compound Blacklisted Address',
+          description: `Compound transaction involving a blacklisted addresses: [${blacklistedAddress}]`,
+          alertId: 'COMP-BLACKLIST',
+          type: FindingType.Suspicious,
+          severity: FindingSeverity.High,
+          metadata: {
+            blacklistedAddresses: `[${blacklistedAddress}]`,
+            compoundAddresses: `[${compoundAddress1} (${compoundAddress1Name}), ${compoundAddress2} (${compoundAddress2Name})]`
           }
         })
       ]);
